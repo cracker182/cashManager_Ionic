@@ -21,7 +21,7 @@
         {{ item.name }}er:
       </div>
       <ion-input type="number" pattern="\d*" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
-      <button ion-button clear item-end>{{ item.amount * item.value }} €</button>
+      <button ion-button clear item-end>{{(item.amount * item.value).toFixed(2) }} €</button>
 
     </ion-item>
   </ion-list>
