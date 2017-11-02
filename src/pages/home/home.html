@@ -20,7 +20,7 @@
       <div style="width: 75px;" text-right item-start>
         {{ item.name }}er:
       </div>
-      <ion-input type="tel" pattern="[0-9]*" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
+      <ion-input type="number" pattern="[0-9]*" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
       <button ion-button clear item-end>{{(item.amount * item.value).toFixed(2) }} €</button>
 
     </ion-item>
