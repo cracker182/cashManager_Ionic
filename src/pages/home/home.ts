@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 })
 export class HomePage {
   currentAmount: any;
-  items: any;
+  items: Array<{name: string, value: number, amount: number}>;
 
   constructor(public navCtrl: NavController, public toastCtrl: ToastController, private storage: Storage, private datePicker: DatePicker) {
 
