@@ -34,10 +34,10 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       //this.statusBar.styleDefault();
-      this.statusBar.overlaysWebView(false);
+      //this.statusBar.overlaysWebView(false);
 
       this.splashScreen.hide();
-      this.keyboard.hideKeyboardAccessoryBar(false);
+      //this.keyboard.hideKeyboardAccessoryBar(false);
     });
   }
 

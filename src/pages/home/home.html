@@ -13,7 +13,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="outer-content">
+<ion-content class="outer-content" #content>
   <ion-list>
     <ion-list-header>Beträge</ion-list-header>
     <ion-item *ngFor="let item of items">
@@ -29,7 +29,7 @@
 
 
 </ion-content>
-<ion-footer>
+<ion-footer [keyboardAttach]="content">
   <ion-toolbar>
     <ion-buttons left>
       <button ion-button (click)="load()">Laden</button>
