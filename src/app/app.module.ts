@@ -32,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DatePicker
+    DatePicker,
+    StatusBar
   ]
 })
 export class AppModule {}
