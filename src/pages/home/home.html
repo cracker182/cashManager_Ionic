@@ -3,16 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>Cash-Manager</ion-title>
+    <ion-buttons end>
+    <button ion-button icon-start outline clear>
+      <ion-icon name="cash"></ion-icon>
+      {{ currentAmount }}
+    </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-list-header>Beträge</ion-list-header>
+    <ion-item *ngFor="let item of items">
+      <div style="width: 75px;" text-right item-start>
+        {{ item.name }}er:
+      </div>
+      <ion-input type="number" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
+      <button ion-button clear item-end>{{ item.amount * item.value }} €</button>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+    </ion-item>
+  </ion-list>
 </ion-content>
