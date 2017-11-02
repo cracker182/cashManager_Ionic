@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
+import { DatePicker } from '@ionic-native/date-picker';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -9,7 +11,7 @@ export class HomePage {
   currentAmount: any;
   items: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController, private storage: Storage, private datePicker: DatePicker) {
 
 
     this.items = [
@@ -96,6 +98,64 @@ export class HomePage {
     }
 
     this.currentAmount = tmpAmount.toFixed(2);
+  }
+
+  load() {
+
+    //
+    this.datePicker.show({
+      date: new Date(),
+      mode: 'date',
+      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK,
+      doneButtonLabel: 'Absenden',
+      cancelButtonLabel: 'Abbrechen',
+      locale: 'de'
+    }).then(
+      date => {
+        //console.log(date.toISOString().split('T')[0]);
+        this.storage.get(date.toISOString().split('T')[0]).then((value) => {
+          if (value) {
+            this.items = JSON.parse(value);
+          } else {
+            let toast = this.toastCtrl.create({
+              message: 'Es wurden keine Daten gefunden.',
+              duration: 3000,
+              position: 'top'
+            });
+
+            toast.present();
+          }
+
+        }).catch((err) => {
+          let toast = this.toastCtrl.create({
+            message: 'Fehler:' + err,
+            duration: 3000,
+            position: 'top'
+          });
+
+          toast.present();
+        })
+      },
+      err => {
+
+      }
+    )
+  }
+
+  save() {
+    console.log(JSON.stringify(this.items));
+    let today = new Date();
+    let dateString = today.toISOString().split('T')[0];
+
+    this.storage.set(dateString, JSON.stringify(this.items));
+
+    let toast = this.toastCtrl.create({
+      message: 'Daten wurden gespeichert.',
+      duration: 3000,
+      position: 'top'
+    });
+
+    toast.present();
   }
 
 }

@@ -1,8 +1,8 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
+    <!--<button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button>
+    </button>-->
     <ion-title>Cash-Manager</ion-title>
     <ion-buttons end>
     <button ion-button icon-start outline clear>
@@ -20,9 +20,22 @@
       <div style="width: 75px;" text-right item-start>
         {{ item.name }}er:
       </div>
-      <ion-input type="number" pattern="[0-9]*" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
+      <ion-input type="tel" pattern="[0-9]*" [(ngModel)]="item.amount" (ionChange)="calculateAmount()"></ion-input>
       <button ion-button clear item-end>{{(item.amount * item.value).toFixed(2) }} €</button>
 
     </ion-item>
   </ion-list>
+
+
+
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons left>
+      <button ion-button (click)="load()">Laden</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="save()">Speichern</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
