@@ -35,6 +35,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       //this.statusBar.styleDefault();
       this.statusBar.overlaysWebView(false);
+      this.statusBar.backgroundColorByHexString('ffffff');
 
       this.splashScreen.hide();
       this.keyboard.hideKeyboardAccessoryBar(false);
